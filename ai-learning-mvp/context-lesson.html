@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一节可以动手体验的 AI 入门课：理解上下文，学会向 Codex 表达清楚的需求。">
+  <title>AI 为什么会答非所问？ · AI 学习</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111212'/%3E%3Cpath d='M6 7q5-3 10 0 5-3 10 0v19q-5-3-10 0-5-3-10 0zm10 0v19' fill='none' stroke='%23baa171' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="lesson-core.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#lesson-panel">跳到学习内容</a>
+  <header class="site-header">
+    <a class="brand" href="#guess" aria-label="AI 学习，回到本节开始">
+      <svg viewBox="0 0 36 32" aria-hidden="true"><path d="M2 4Q10 0 18 5Q26 0 34 4V28Q26 24 18 29Q10 24 2 28ZM18 5V29"/></svg>
+      <span>AI 学习</span>
+    </a>
+    <nav class="header-nav" aria-label="主导航"><button data-dialog="path-dialog">学习路径</button><button data-dialog="glossary-dialog">术语手册</button></nav>
+    <div class="header-right"><button data-stage="practice">我的练习 <span aria-hidden="true">↗</span></button><button class="menu-toggle" id="menu-toggle" aria-label="打开本课目录" aria-expanded="false" aria-controls="course-rail">☰</button></div>
+  </header>
+  <div class="layout">
+    <aside class="course-rail" id="course-rail" aria-label="本节课程目录">
+      <div class="rail-top"><p class="rail-caption">本节学习路径</p><p class="rail-subtitle">与 AI 协作 / 上下文</p></div>
+      <nav class="rail-nav" aria-label="学习环节">
+        <button data-stage="guess" class="is-active"><span>01</span>先猜一猜</button>
+        <button data-stage="explain"><span>02</span>看懂原理</button>
+        <button data-stage="experiment"><span>03</span>动手实验</button>
+        <button data-stage="practice"><span>04</span>Codex 实践</button>
+      </nav>
+      <div class="rail-note"><span class="gold">这一课，带走三个能力</span><p>识别需求里的空白<br>补充真正相关的信息<br>检查 AI 是否理解正确</p></div>
+      <div class="rail-bottom"><p class="rail-caption">学习记录</p><p id="completion-state">本课尚未完成</p><span id="save-state">记录保存在当前浏览器</span><div class="rail-line"></div><span>上下文增强样课 · v3 05.02</span></div>
+    </aside>
+    <button class="rail-backdrop" id="rail-backdrop" aria-label="关闭本课目录" hidden></button>
+    <main id="main-content">
+      <section class="lesson-intro" aria-labelledby="lesson-title">
+        <div class="intro-copy"><p class="lesson-meta">与 AI 协作 <span>/</span> 第 2 课</p><h1 id="lesson-title">AI 为什么会<br>答非所问？</h1><p class="intro-description">理解上下文，把脑海里的想法变成清楚的需求。</p></div>
+        <svg class="context-art" viewBox="0 0 540 280" role="img" aria-labelledby="art-title art-desc">
+          <title id="art-title">让相关信息共同约束生成结果</title><desc id="art-desc">目标、背景和限制三张信息纸，经过汇合的路径，指向生成结果。提供信息后仍需验证结果。</desc>
+          <defs><linearGradient id="sheet" x1="0" x2="1"><stop stop-color="#ffffff" stop-opacity=".035"/><stop offset="1" stop-color="#ffffff" stop-opacity=".005"/></linearGradient><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#baa171"/></marker></defs>
+          <g fill="url(#sheet)" stroke="#797974" stroke-width=".8"><path d="M40 36L186 10V105L40 131Z"/><path d="M20 116L212 82V182L20 216Z"/><path d="M69 195L237 164V255L69 286Z"/></g>
+          <g fill="#eeece7" font-size="18" font-family="Microsoft YaHei,sans-serif"><text x="58" y="65">目标</text><text x="40" y="148">背景</text><text x="89" y="227">限制</text></g>
+          <g fill="#a8a7a2" font-size="12" font-family="Microsoft YaHei,sans-serif"><text x="58" y="87">我要做什么</text><text x="40" y="170">谁在什么情况下使用</text><text x="89" y="249">哪些要求必须满足</text></g>
+          <g fill="none" stroke="#baa171" stroke-width="1"><path d="M166 49C292 70 279 131 389 133"/><path d="M192 142C284 163 293 133 389 133"/><path d="M218 226C292 239 294 133 389 133" marker-end="url(#arrow)"/></g>
+          <path d="M400 65L518 44V220L400 241Z" fill="url(#sheet)" stroke="#baa171" stroke-width=".9"/>
+          <g font-family="Microsoft YaHei,sans-serif"><text x="421" y="108" fill="#baa171" font-size="20">结果</text><text x="419" y="139" fill="#eeece7" font-size="14">需要与你的</text><text x="419" y="161" fill="#eeece7" font-size="14">目标逐项核对</text></g><path d="M420 187L490 175M420 198L475 189" stroke="#797974"/>
+        </svg>
+      </section>
+      <nav class="lesson-tabs" aria-label="切换教学环节"><button data-stage="guess" class="is-active">先猜一猜</button><button data-stage="explain">看懂原理</button><button data-stage="experiment">动手实验</button><button data-stage="practice">Codex 实践</button></nav>
+      <div id="lesson-panel" tabindex="-1">
+        <section class="stage" id="stage-guess" aria-labelledby="guess-title">
+          <div class="section-heading"><span>01</span><div><h2 id="guess-title">说清楚需求，会改变什么？</h2><p>比较下面两种描述，再做出你的判断。</p></div></div>
+          <div class="prompt-comparison">
+            <article><span class="example-letter">A.</span><div><blockquote>“帮我做一个好用的任务管理工具。”</blockquote><p class="example-note">只表达愿望</p><p>“好用”可能意味着操作简单，也可能意味着功能丰富；个人清单和团队系统都可能符合这句话。</p></div></article>
+            <article><span class="example-letter">B.</span><div><blockquote>“给我自己用，能添加任务、标记完成，关闭页面后任务仍然保留。”</blockquote><p class="example-note">补充目标与功能</p><p>使用者、核心操作和保存要求更明确了。不过怎样保存、要不要跨设备同步，还需要进一步说明。</p></div></article>
+          </div>
+          <form class="question-form" data-question="guess">
+            <fieldset><legend>没有说清楚的部分，AI 会怎样处理？</legend>
+              <label class="answer"><input type="radio" name="guess" value="infer"><span>根据已有信息作出假设，也可能先追问。</span></label>
+              <label class="answer"><input type="radio" name="guess" value="mind"><span>只要足够聪明，就能知道我心里的具体需求。</span></label>
+              <label class="answer"><input type="radio" name="guess" value="short"><span>提示词太短，因此一定无法完成任务。</span></label>
+            </fieldset>
+            <div class="question-action"><span>先思考，再揭晓。答错也可以重新尝试。</span><button class="button-primary" type="submit">提交判断 <span aria-hidden="true">→</span></button></div>
+            <div class="feedback" id="feedback-guess" aria-live="polite" hidden></div>
+          </form>
+          <div class="lesson-takeaway"><span class="gold">带着这个问题往下学</span><p>模型不知道哪些细节是你“默认它应该知道”的。你需要做的，是把<strong>会改变结果的区别</strong>表达出来，并确认双方理解一致。</p><button class="text-link" data-stage="explain">继续：看懂背后的原理 <span aria-hidden="true">↗</span></button></div>
+        </section>
+
+        <section class="stage" id="stage-explain" aria-labelledby="explain-title" hidden>
+          <div class="section-heading"><span>02</span><div><h2 id="explain-title">上下文，是这次回答能参考的信息</h2><p>先分清“它学过什么”与“它现在拿到了什么”。</p></div></div>
+          <div class="article-body">
+            <p>你请一位设计师“做个任务工具”。如果没有告诉他谁来用、要解决什么问题，他只能先问你，或者根据经验作出一些假设。你看到成果后才说“我只想自己用，不需要登录”，双方就需要返工。</p>
+            <p>这个例子帮助我们理解信息不足，但有一个边界：<strong>大模型不是在用人的头脑猜你的心思。</strong>它利用训练中学到的模式，结合本次输入逐步生成内容；编程助手还可能先读取文件、调用工具，再把得到的信息用于后续生成。</p>
+            <h3>1. “上下文”具体包括什么？</h3>
+            <p>在这里，上下文指模型本次生成时可以利用的输入信息。它可能包括当前要求、产品提供的规则、仍被纳入的历史对话、已读取的文件、图片，以及工具返回的内容。<strong>你屏幕上看见的全部聊天记录，不一定等于模型这一次实际拿到的完整输入。</strong></p>
+            <div class="source-flow" aria-label="上下文来源示意"><span>当前要求</span><span>相关对话</span><span>已读取资料</span><span>工具结果</span><strong>共同影响这一次的生成</strong></div>
+            <p>比如你提出“关闭后任务还在”，这约束了保存行为；你再补充“只在当前浏览器使用，不要求同步”，就进一步缩小了实现范围。信息本身没有替你完成代码，但减少了模型需要自行补全的决定。</p>
+            <h3>2. 知识、上下文和记忆，分别是什么？</h3>
+            <dl class="concept-list"><div><dt>训练中学到的知识与模式</dt><dd>模型经过训练形成的能力。例如它可能知道网页常见的保存方式。给它发一段新需求，通常是在提供本次输入，不是在当场重新训练模型。</dd></div><div><dt>本次可用的上下文</dt><dd>这一次生成能参考的具体信息。例如“个人使用”“不需要登录”“刷新后保留任务”。模型熟悉任务工具，并不等于知道你的项目要求。</dd></div><div><dt>产品保存的记录或记忆</dt><dd>这是产品层面的保存和检索机制。记录需要被选取、读取或整理进当前工作过程，才能影响本次回答；具体方式因产品而异，不能一概当作永久、完整的记忆。</dd></div></dl>
+            <p class="margin-note">实用判断：不要只问“我以前说过没有”，还要问“这次有没有可靠依据表明，它参考了正确的那份信息”。</p>
+            <h3>3. 为什么聊了很久，它仍会漏掉要求？</h3>
+            <p>模型一次能处理的信息有容量限制，通常用 <button class="inline-term" data-dialog="glossary-dialog">Token</button> 计量。你可以把上下文窗口暂时想成一张有面积限制的工作台：对话、资料和任务都要占位置，输出也需要空间。</p>
+            <p>工作台只是类比。真实容量不是按文件数或聊天条数计算；不同系统可能选取、截断或压缩历史信息。压缩有助于继续长任务，但摘要不是逐字保留的原始记录。即使信息仍在可用范围内，模型也可能遗漏或错误使用它，因此<strong>“放进去”不等于“已经准确用到”。</strong></p>
+            <p>对你的项目，更稳妥的做法是保存一份简短的当前需求：目标、确定的功能、关键限制、验收条件。需求变化时更新它；遇到偏差时，指出哪一项被遗漏，让 Codex 先复述再继续。</p>
+            <h3>4. 上下文为什么不是越多越好？</h3>
+            <p>你真正需要的是<strong>足够、相关、清楚且互不冲突的信息</strong>。十页无关历史可能没有回答“任务存在哪里”；一段明确的保存要求却能直接支持实现决定。旧需求和新需求一起出现时，也要标明哪个有效。</p>
+            <div class="contrast-notes"><div><h4>有帮助的补充</h4><p>“这是个人清单，无需登录；任务只存当前浏览器。刷新后，任务和完成状态要保留。”</p></div><div><h4>仍有歧义的补充</h4><p>“做得专业一点、智能一点，我之前见过一个特别好用的。”——它没有说明具体功能和验收方式。</p></div></div>
+            <h3>5. 需求清楚之后，还需要验证吗？</h3>
+            <p>需要。上下文能减少部分信息缺口，不能保证代码正确，也不能保证所有要求都被执行。你仍要运行作品、逐项检查。例如“刷新后还在”就应真的添加任务、标记完成、刷新，再核对两种状态。</p>
+            <p>如果描述已经清楚，结果仍不对，就继续排查：资料是否实际读取？要求是否冲突？代码是否有错误？不要把所有问题都归因于“提示词写得不好”。</p>
+          </div>
+          <div class="next-row"><span>下一步，把“相关信息”亲手加进去。</span><button class="button-primary" data-stage="experiment">进入上下文实验 <span aria-hidden="true">→</span></button></div>
+        </section>
+
+        <section class="stage" id="stage-experiment" aria-labelledby="experiment-title" hidden>
+          <div class="section-heading"><span>03</span><div><h2 id="experiment-title">同一个目标，逐项补充信息</h2><p>先预测：你增加的这条信息，会明确哪一个决定？然后再勾选观察。</p></div></div>
+          <p class="experiment-disclaimer">教学演示：以下内容按明确规则更新，用于观察需求的变化；没有调用 AI，也不代表某个模型的实际输出。</p>
+          <div class="experiment-grid">
+            <fieldset class="context-controls"><legend>给需求补充哪些信息？</legend>
+              <label><input type="checkbox" name="context-piece" value="audience"><span><strong>使用场景</strong>只给自己用，不需要账户登录。</span></label>
+              <label><input type="checkbox" name="context-piece" value="actions"><span><strong>具体操作</strong>添加、标记完成、按状态筛选。</span></label>
+              <label><input type="checkbox" name="context-piece" value="storage"><span><strong>保存与验收</strong>当前浏览器保存，刷新后仍保留。</span></label>
+              <label><input type="checkbox" name="context-piece" value="noise"><span><strong>一条生活背景</strong>我今天喝了一杯咖啡。</span></label>
+            </fieldset>
+            <div class="experiment-result" aria-live="polite"><h3>现在交给 AI 的描述</h3><pre id="experiment-prompt"></pre><p class="mini-label">已明确的决定</p><ul id="experiment-checks"></ul><p class="mini-label">仍有空白的决定</p><ul id="experiment-unknowns"></ul><p id="noise-note" class="margin-note" hidden>这条生活背景与当前功能没有直接关系，不会自动增加功能约束。如果你要做咖啡记录工具，它才可能变得相关；相关性取决于当前任务。</p></div>
+          </div>
+          <div class="article-body"><h3>观察之后，再想深一步</h3><p>勾选“保存与验收”后，你得到的不是“模型一定会写对”的保证，而是一条可以检查的要求。只选其他两项时，保存策略仍然没有明确。再多无关信息，也不能替代这一条。</p><p>全部相关项选中后，界面会显示这三个决定已明确。真实项目仍可能需要补充编辑、备份、无障碍等要求；本实验只审阅列出的三个维度。需求不存在一张适用于所有项目的满分清单。</p></div>
+          <div class="next-row"><span>把方法用到自己的第一个项目。</span><button class="button-primary" data-stage="practice">去 Codex 实践 <span aria-hidden="true">→</span></button></div>
+        </section>
+
+        <section class="stage" id="stage-practice" aria-labelledby="practice-title" hidden>
+          <div class="section-heading"><span>04</span><div><h2 id="practice-title">把一个想法，整理成可讨论的需求</h2><p>这一次先练“让双方理解一致”，下一步才是让 Codex 编写代码。</p></div></div>
+          <div class="article-body"><p>打开 Codex，选择你准备使用的练习项目。在开始前，先把下面五项写清楚。你可以使用任务管理工具，也可以换成自己的想法。没有确定的项目，保留“待确认”，让 Codex 帮你提出问题。</p></div>
+          <div class="brief-grid"><form class="brief-form" id="brief-form">
+            <label for="brief-goal">目标 <span>希望解决什么问题？</span></label><input id="brief-goal" name="goal" maxlength="2000" placeholder="例如：把每天要做的事情集中记录下来">
+            <label for="brief-audience">使用者 <span>谁在什么情况下使用？</span></label><input id="brief-audience" name="audience" maxlength="2000" placeholder="例如：我自己，在电脑浏览器中使用">
+            <label for="brief-features">必须实现 <span>写可以观察的具体动作。</span></label><textarea id="brief-features" name="features" rows="3" maxlength="2000" placeholder="例如：添加任务、标记完成，按状态筛选"></textarea>
+            <label for="brief-constraints">限制 <span>边界和暂时不需要的功能。</span></label><textarea id="brief-constraints" name="constraints" rows="2" maxlength="2000" placeholder="例如：不做登录和跨设备同步；数据只存当前浏览器"></textarea>
+            <label for="brief-acceptance">验收条件 <span>怎么亲手确认它做好了？</span></label><textarea id="brief-acceptance" name="acceptance" rows="3" maxlength="2000" placeholder="例如：添加任务并标记完成，刷新后两项状态仍保留"></textarea>
+            <button type="button" class="text-link" id="load-example">填入任务工具示例 <span aria-hidden="true">↗</span></button>
+          </form><div class="brief-output"><div class="output-heading"><h3>带到 Codex 的任务说明</h3><button class="button-small" id="copy-brief">复制说明</button></div><pre id="brief-preview" tabindex="0" aria-label="可复制的任务说明"></pre><p id="copy-status" aria-live="polite">草稿随输入保存在当前浏览器。</p><p>这里整理你的表达，不自动判断需求是否合理。发送前仍要通读并确认。</p></div></div>
+          <div class="article-body practical-steps"><h3>在 Codex 中，按这三步试一次</h3><ol><li><strong>先让它复述，暂不写代码。</strong>复制上方说明，发给 Codex。检查它是否区分了你的明确要求与它自行作出的假设。</li><li><strong>找出一个关键差异。</strong>例如它计划做云端账户，而你只想本地个人使用。指出这项差异，让它更新需求和验收条件，不要只说“不是我想要的”。</li><li><strong>确认后再开始。</strong>双方理解一致后，再让它制定小步实施计划。将确认的需求保存到项目说明中，并在需求变化时更新。</li></ol></div>
+          <figure class="real-screenshot"><button class="screenshot-button" id="open-screenshot" aria-label="放大查看官方真实 Codex 演示界面"><img src="assets/official-desktop-demo.webp" alt="官方 Codex 演示中的真实输入界面：上方有项目选择，输入区域引用了多个外部资料来源。" loading="lazy" width="1600" height="900"></button><figcaption><strong>真实界面参考 · 官方演示画面</strong><p>观察中间的任务输入区域，以及输入中引用的资料来源：任务目标与相关资料可以共同构成工作上下文。图中是官方演示，不是本机任务工具的操作记录，平台和版本可能与你不同；本课不要求连接这些应用或调整图中的权限设置。</p><a href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noopener noreferrer">查看原始官方来源 ↗</a><span>获取日期：2026-10-15 · 点击图片可放大</span></figcaption></figure>
+          <div class="article-body"><h3>如果参考文件已经在项目里，还要说明吗？</h3><p>要说明它与任务的关系。例如：“请先阅读项目根目录的 requirements.md，以其中当前确认的功能为准；先列出需求摘要和待确认问题。”随后检查 Codex 实际读取或复述的内容。不要把“文件在那里”当作“所有内容已经自动进入当前回答”的证据。</p><p>同样，模型给出一份听起来合理的计划，也不能证明代码已经实现。需求理解、代码实现和运行验收，是三个需要分别检查的环节。</p></div>
+          <section class="transfer-section" aria-labelledby="transfer-title"><div class="section-heading"><span>✓</span><div><h2 id="transfer-title">换一个场景，检查是否真正理解</h2><p>三题都答对后，可以将本课标记为完成。每题都能重新尝试。</p></div></div>
+            <form class="question-form" data-question="transfer-short"><fieldset><legend>1. 前文已经确定了页面布局，你只说“把保存按钮移到右边”。这条短指令一定不好吗？</legend><label class="answer"><input type="radio" name="transfer-short" value="context"><span>不一定，要看前文是否已经提供足够且明确的背景。</span></label><label class="answer"><input type="radio" name="transfer-short" value="length"><span>一定不好，每次都要写完整的长提示词。</span></label></fieldset><button class="button-small" type="submit">检查这一题</button><div class="feedback" id="feedback-transfer-short" aria-live="polite" hidden></div></form>
+            <form class="question-form" data-question="transfer-file"><fieldset><legend>2. 你发现 Codex 没按需求文件实现保存功能，下一步怎样做更可靠？</legend><label class="answer"><input type="radio" name="transfer-file" value="exists"><span>文件就在目录里，直接要求它“认真一点”。</span></label><label class="answer"><input type="radio" name="transfer-file" value="read"><span>指出文件和要求，确认实际读取，再核对它的理解。</span></label></fieldset><button class="button-small" type="submit">检查这一题</button><div class="feedback" id="feedback-transfer-file" aria-live="polite" hidden></div></form>
+            <form class="question-form" data-question="transfer-more"><fieldset><legend>3. 页面刷新后任务消失了，你应优先补充什么信息？</legend><label class="answer"><input type="radio" name="transfer-more" value="all"><span>尽量多的聊天历史和生活背景。</span></label><label class="answer"><input type="radio" name="transfer-more" value="relevant"><span>保存位置、是否同步，以及刷新后状态应保留的验收条件。</span></label></fieldset><button class="button-small" type="submit">检查这一题</button><div class="feedback" id="feedback-transfer-more" aria-live="polite" hidden></div></form>
+            <div class="completion-row"><p id="transfer-progress" aria-live="polite">理解自检：0 / 3</p><button class="button-primary" id="complete-lesson" disabled>标记本课完成 <span aria-hidden="true">✓</span></button></div><p id="completion-message" aria-live="polite"></p>
+          </section>
+        </section>
+      </div>
+      <footer class="lesson-footer"><p>本课的核心：提供会改变结果的信息，再验证它是否被正确使用。</p><button data-dialog="sources-dialog" class="text-link">资料来源与课件说明 ↗</button><a class="text-link" href="data-literacy.html#guess">试学 03.04：变量、对象与数组 →</a><a class="text-link" href="course.html">返回完整课程总览 →</a><span>增强样课 · 内容核对于 2026-10-15</span></footer>
+    </main>
+  </div>
+  <dialog id="glossary-dialog" aria-labelledby="glossary-title"><div class="dialog-header"><h2 id="glossary-title">本课术语手册</h2><button data-close-dialog aria-label="关闭术语手册">×</button></div><dl class="concept-list"><div><dt>上下文 · Context</dt><dd>模型本次生成可利用的具体输入信息。可能包括指令、相关对话、已读取资料和工具结果；它不自动等于所有历史记录。</dd></div><div><dt>Token</dt><dd>模型处理文本时使用的片段单位，可能是一个词、词的一部分或其他字符组合。中文里不能固定地把一个字当成一个 Token。</dd></div><div><dt>上下文窗口 · Context window</dt><dd>一次请求可处理的 Token 容量。输入、输出以及某些模型的推理内容都可能占用容量，具体以模型与产品说明为准。</dd></div><div><dt>推理 · Inference</dt><dd>在这里指使用训练好的模型处理输入并产生输出的过程，不等同于重新训练模型，也不保证推断正确。</dd></div><div><dt>上下文压缩 · Compaction</dt><dd>用更少的信息表示此前工作中的重要状态，以继续长任务。它不是逐字保留所有历史的承诺。</dd></div><div><dt>验收条件</dt><dd>可以实际观察或测试的完成标准。例如“刷新后任务和完成状态仍保留”，比“做得好用一点”更容易检查。</dd></div></dl></dialog>
+  <dialog id="path-dialog" aria-labelledby="path-title"><div class="dialog-header"><h2 id="path-title">这一课的学习路径</h2><button data-close-dialog aria-label="关闭学习路径">×</button></div><p>这是一节完整体验课，用来检验讲解与互动方式。建议依次完成四个环节，也可以自由返回。</p><a class="lesson-link" href="course.html">完整课程：13 模块 · 80 节主课 →</a><div class="dialog-path"><button data-stage="guess">01 先猜一猜 <span>观察信息缺口</span></button><button data-stage="explain">02 看懂原理 <span>分清知识、上下文与记忆</span></button><button data-stage="experiment">03 动手实验 <span>逐项改变相关信息</span></button><button data-stage="practice">04 Codex 实践 <span>整理需求并迁移自检</span></button></div><a class="lesson-link" href="data-literacy.html#guess">另一个样课：03.04 变量、对象与数组 →</a><details class="restart-section"><summary>重新体验本课</summary><p>会清除当前浏览器中这节课的答案、完成状态、实验选择和需求草稿，回到首次学习状态。</p><button class="button-small" id="restart-lesson">清除本课记录并重新开始</button></details></dialog>
+  <dialog id="sources-dialog" aria-labelledby="sources-title"><div class="dialog-header"><h2 id="sources-title">资料来源与课件说明</h2><button data-close-dialog aria-label="关闭资料来源">×</button></div><p>讲解、题目和实验为本课原创教学设计。以下资料用于核对概念与产品操作；示例不代表模型表现保证。</p><ol class="source-list"><li><a href="https://learn.chatgpt.com/docs/prompting" target="_blank" rel="noopener noreferrer">OpenAI 官方：Prompting ↗</a><p>核对目标、相关背景、输出与边界，以及文件参考和结果验证方法。</p></li><li><a href="https://developers.openai.com/api/docs/guides/conversation-state" target="_blank" rel="noopener noreferrer">OpenAI 官方：Conversation state ↗</a><p>核对上下文窗口与输入、输出的容量关系。</p></li><li><a href="https://developers.openai.com/api/docs/guides/compaction" target="_blank" rel="noopener noreferrer">OpenAI 官方：Compaction ↗</a><p>核对长任务压缩与状态延续。具体 API 行为不被概括为所有产品的统一行为。</p></li><li><a href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noopener noreferrer">OpenAI 官方：桌面端文档与演示 ↗</a><p>本课真实界面图片来自该页面官方演示的原始预览图，未经合成或重绘。原始素材版权归 OpenAI 所有。</p></li></ol><p>核对日期：2026-10-15。此 MVP 在浏览器本地运行，不调用 AI 服务；自由文本练习不由 AI 自动评分。学习记录只保存在当前浏览器，清理浏览器数据后可能丢失。</p></dialog>
+  <dialog class="image-dialog" id="screenshot-dialog" aria-label="官方真实 Codex 演示界面大图"><div class="dialog-header"><p>官方真实演示画面 · 查看输入与资料引用</p><button data-close-dialog aria-label="关闭截图">×</button></div><img src="assets/official-desktop-demo.webp" alt="官方 Codex 演示输入界面放大图。"><a href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noopener noreferrer">原始官方来源 ↗</a></dialog>
+  <noscript><p class="noscript-message">请启用 JavaScript 以使用互动环节；当前页面保留了本课的静态讲解。</p><style>.stage[hidden]{display:block!important}</style></noscript>
+</body>
+</html>

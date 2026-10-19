@@ -1,0 +1,20 @@
+03.04 lesson visual prototype. Tool: built-in image_gen.imagegen. Date: 2026-10-15. Status: awaiting user approval.
+
+INITIAL PROMPT
+Use case: ui-mockup. Asset type: ONE desktop learning screen visual prototype, 1536x1024 landscape. This is a new lesson inside an existing approved Chinese HTML learning website, NOT a Codex application screenshot. References: first image approved visual style; second image actual existing implementation, use ONLY as layout/style reference. Preserve the restrained editorial black and champagne-gold design: continuous flat near-black #111212 background, warm-white body text, subtle thin grey dividing rules, slim left navigation about 210px, main learning content occupies over 80% remaining area, Chinese serif titles, clean Chinese sans body and monospaced code. No marketing hero, no big decorative artwork, no gradients/glows, no card grid, no right sidebar, no fake AI chat or Codex UI.
+
+Show a complete readable learning experiment viewport. Top header brand book-outline icon and "AI 学习", links "学习路径" and "术语手册"; far right "我的练习 ↗". Left rail "本节学习路径", subtitle "计算机与代码阅读", four numbered stages "先猜一猜", "看懂原理", active gold "动手实验", "Codex 实践". Small rail footer "样课 · 03.04". Main at top a modest serif heading "一条任务，怎样变成页面内容？" and description "读懂变量、对象与数组，从修改一个值开始。". Four text tabs same as rail; active "动手实验". Below divider section heading "03  改一个值，先预测，再运行" and small explanation "这是本地数据实验，不调用 AI；运行后会重新绘制右侧任务列表。"
+
+A full-width open operation line with three accessible labelled controls: "目标任务" select "t02（第 2 条）", "修改字段" select "title · 标题", "新值" text input "读第二章"; a smaller outline action "恢复初始数据" to right. Next a row "先预测：运行后会发生什么？" with three radio choices clearly all unselected "只改 t02 的标题", "两条标题都变", "标题和完成状态都变". Prominent restrained gold button "运行并核对 →".
+
+Below, two large open columns separated by ONE fine vertical rule, no outer rounded containers. Left heading "当前数据 · tasks"; code:
+const tasks = [
+  { id: "t01", title: "读一章书", done: false },
+  { id: "t02", title: "读一章书", done: false }
+];
+Use comfortably readable monospaced syntax colouring with restrained gold field values, no dense IDE chrome. Under code Chinese line "一组任务 → 一条任务 → 一个字段". Right heading "页面预览"; two clean checklist rows with unchecked boxes, both label "读一章书", small visible identification "t01" / "t02"; subtle text under "当前仍是修改前的数据。运行后核对目标与未改动项。". Data displayed is CURRENT before running; form newvalue is pending only. Therefore code and rows must still show both original titles.
+
+Bottom of viewport a thin rule and collapsible text help "卡住了？从这里继续" with three quiet text links "找不到目标任务", "为什么从 0 开始计数", "修改后没变化". Include enough whitespace for calm study and serious editorial taste. Code/UI real implementable with native HTML/CSS; no raster educational diagrams, no stock pictures, no extra modules, badges or fake completion statistics. All Chinese text crisp and correct. This single image is the prototype for discussing layout and controls, not an implemented screen or a record of actual operation.
+
+CORRECTION PROMPT
+Use case: text-localization. Edit only the small breadcrumb above the large main heading in this Chinese learning-page UI prototype. Replace the incorrect "与 AI 协作 / 第 2 课" with exactly "计算机与最小代码阅读 / 03.04". Preserve the entire rest of the image unchanged: overall 1536x1024 layout, black and gold colours, main heading, code, task preview, controls, tabs, left rail, type style, spacing, all other Chinese copy. This remains a learning WEBSITE visual prototype, never a Codex application screenshot. Do not redesign, add, remove or move any element. Keep solid dark background.

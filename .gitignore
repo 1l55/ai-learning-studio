@@ -1,0 +1,30 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc
+.netrc
+.git-credentials
+.codex/
+.agents/
+.aws/
+# Local learning data, backups and logs
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.sddl
+*.log
+*.bak
+*learning-notes.md
+# Generated release snapshots never belong in source history
+releases/
+dist/
+node_modules/
+__pycache__/
+.DS_Store
+Thumbs.db

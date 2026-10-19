@@ -1,0 +1,83 @@
+/* The approved 03.04 prototype extends the existing editorial learning shell. */
+.data-lesson .layout{grid-template-columns:250px minmax(0,1fr)}
+.data-lesson main{max-width:1500px;padding:22px 40px 0}
+.data-lesson .lesson-intro{display:block;min-height:170px;padding:8px 0 17px}
+.data-lesson h1{font-size:clamp(32px,4.15vw,64px);line-height:1.2;letter-spacing:0;margin-bottom:14px}
+.data-lesson .intro-description{font-size:21px}
+.data-lesson .lesson-meta{margin-bottom:17px;letter-spacing:1px}
+.data-lesson .lesson-tabs{gap:43px;margin-top:0}
+.data-lesson .course-rail{padding:35px 30px;top:60px;height:calc(100dvh - 60px)}
+.data-lesson .rail-top{padding-bottom:18px}
+.data-lesson .rail-subtitle{font-size:14px}
+.data-lesson .rail-nav{margin-top:12px}
+.data-lesson .rail-nav button{padding:15px 9px;font-size:16px}
+.data-lesson .section-heading{margin-bottom:27px}
+.data-lesson .section-heading h2{font-size:29px}
+.data-lesson .article-body{max-width:990px}
+.data-lesson .article-body h2{font:600 29px/1.5 var(--serif);margin:32px 0 20px}
+.data-lesson .article-body h3{font-size:25px}
+.data-lesson .article-body code,.help-box code{font-family:Consolas,"Cascadia Code",monospace;color:#dfc591;font-size:.93em;overflow-wrap:anywhere}
+.data-lesson pre{white-space:pre-wrap;overflow-wrap:anywhere;font:16px/1.9 Consolas,"Cascadia Code",monospace;margin:21px 0 25px;tab-size:2}
+.data-lesson pre code{font-size:inherit;color:#c0d3e2}
+.data-lesson .article-body pre{background:#171818;padding:20px 23px;border-left:1px solid var(--gold)}
+.data-lesson .article-body blockquote{font:16px/1.9 var(--sans);border-left:1px solid var(--gold);padding:14px 20px;min-height:0;background:#c4a66c05}
+.data-lesson details{border-top:1px solid var(--line);padding:16px 0;margin:18px 0;font-size:15px}
+.data-lesson summary{color:var(--gold);cursor:pointer;min-height:30px}
+.data-lesson details[open]>summary{margin-bottom:18px}
+.table-scroll{overflow-x:auto;max-width:100%;margin:24px 0}
+.data-lesson table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.8}
+.data-lesson th,.data-lesson td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:12px 15px 12px 0}
+.data-lesson th{color:var(--gold);font-weight:400}
+.experiment-controls{display:grid;grid-template-columns:1fr 1fr 1.1fr auto;gap:28px;align-items:end;margin-top:30px}
+.experiment-controls label{display:block;font-size:16px;margin-bottom:7px}
+.experiment-controls input,.experiment-controls select{width:100%;height:45px;min-width:0;border:1px solid #85847c;border-radius:2px;background:#151616;color:var(--ink);font:16px var(--sans);padding:8px 14px}
+.experiment-controls select{color-scheme:dark}
+.experiment-controls input:focus-visible,.experiment-controls select:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.experiment-controls>div{min-width:0}
+.experiment-controls .button-small{height:45px;min-width:178px;color:var(--gold);border-color:var(--gold);font-size:15px;padding:8px 24px}
+.prediction-row{display:flex;align-items:center;gap:20px;margin-top:32px;flex-wrap:wrap}
+.prediction-row fieldset{display:flex;align-items:center;gap:25px;flex-wrap:wrap;flex:1}
+.prediction-row legend{float:left;margin:0 25px 0 0;font-size:17px;line-height:1.7}
+.prediction-row label{display:flex;align-items:center;gap:12px;font-size:16px;cursor:pointer}
+.prediction-row input{margin-top:0}
+.prediction-row .button-primary{min-width:208px}
+.data-workbench{display:grid;grid-template-columns:1fr 1fr;gap:45px;margin:35px 0 26px}
+.data-workbench>div{min-width:0}
+.data-workbench h3{font:600 23px/1.5 var(--serif);margin:0 0 21px}
+.data-preview{border-left:1px solid var(--line);padding-left:45px}
+.data-lesson .data-workbench pre{margin:0 0 23px;font-size:18px;line-height:1.8;min-height:135px;background:transparent;border:0;padding:0;color:#b5d0e8}
+.syntax-string{color:#d4b364}.syntax-keyword{color:#8cc5ef}.syntax-name{color:#b5d0e8}
+.data-caption{font-size:15px;color:var(--ink);margin:0}
+.preview-list{list-style:none;padding:0;margin:0}
+.preview-list li{display:flex;align-items:center;gap:20px;min-height:65px;border-bottom:1px solid var(--line);font-size:18px}
+.preview-mark{width:23px;height:23px;border:1px solid #dedcd6;border-radius:2px;flex:0 0 auto;display:grid;place-items:center;font-size:17px;color:var(--gold)}
+.preview-list .task-id{margin-left:auto;color:var(--muted);font:13px Consolas,monospace;padding-left:10px}
+.preview-list .task-label{overflow-wrap:anywhere;min-width:0}
+.preview-list .is-done .task-label{text-decoration:line-through;color:var(--muted)}
+.data-lesson .preview-note{font-size:13px;color:var(--muted);line-height:1.9;margin:20px 0 0}
+.data-lesson .result-feedback{margin:22px 0 5px;font-size:15px}
+.task-navigation{display:flex;flex-wrap:wrap;gap:18px;border-bottom:1px solid var(--line);padding:0 0 15px;margin-bottom:23px}
+.task-navigation button{font-size:14px;padding:5px 0;border-bottom:1px solid transparent;color:var(--muted)}
+.task-navigation button.is-active{color:var(--gold);border-color:var(--gold)}
+.task-instruction{font-size:14px;color:var(--muted);border-left:1px solid var(--gold);padding-left:15px;margin-bottom:20px}
+.comparison-box{margin:24px 0;border-top:1px solid var(--line);padding-top:17px;font-size:14px}
+.comparison-box strong{color:var(--gold)}
+.help-entry{display:flex;align-items:center;flex-wrap:wrap;gap:20px 36px;border-top:1px solid var(--line);padding:24px 0;margin-top:26px}
+.help-entry>span{font:22px var(--serif)}
+.help-entry>span:before{content:'⌄';color:var(--gold);margin-right:18px}
+.help-entry button{color:var(--muted);font-size:15px;border-left:1px solid var(--line);padding:0 0 0 32px}
+.help-box{font-size:15px;line-height:1.9;color:var(--muted);max-width:1000px}
+.help-box p,.help-box ol{margin:14px 0}
+.read-row{border-top:1px solid var(--line);margin-top:35px;padding-top:23px;display:flex;gap:15px;align-items:flex-start;font-size:15px}
+.milestone-line{color:var(--gold);font-size:14px;line-height:1.9;margin:17px 0}
+.copy-block{margin:25px 0}
+.copy-block pre{font:15px/1.9 var(--sans);background:#171818;border-left:1px solid var(--gold);padding:18px 23px;margin-bottom:12px}
+.copy-status{font-size:13px;color:var(--muted);margin-left:15px}
+.shot-note{font-size:14px;color:var(--muted);border-left:1px solid var(--gold);padding-left:18px;margin:23px 0}
+.lesson-link{display:block;color:var(--gold);font-size:15px;padding:15px 0;text-decoration:none;border-bottom:1px solid var(--line)}
+.data-lesson .site-header{padding:0 40px;height:60px}
+.data-lesson .lesson-footer a{font-size:12px;color:var(--gold)}
+@media(min-width:1600px){.data-lesson main{padding-left:45px;padding-right:45px}}
+@media(max-width:1200px){.data-lesson .layout{grid-template-columns:200px minmax(0,1fr)}.data-lesson .course-rail{padding-left:23px;padding-right:22px}.data-lesson main{padding:25px 30px 0}.data-lesson h1{font-size:40px}.data-lesson .intro-description{font-size:17px}.experiment-controls{gap:17px;grid-template-columns:1fr 1fr 1.1fr}.experiment-controls>button{grid-column:3;justify-self:end}.prediction-row fieldset{gap:20px}.prediction-row legend{float:none;width:100%;margin:0 0 15px}.data-workbench{gap:30px}.data-preview{padding-left:30px}.data-lesson .data-workbench pre{font-size:15px}.help-entry{gap:17px 23px}.help-entry button{padding-left:22px}}
+@media(max-width:850px){.data-lesson .layout{display:block}.data-lesson .course-rail{width:255px;top:62px;height:calc(100dvh - 62px)}.data-lesson .site-header{padding:0 22px;height:62px}.data-lesson h1{font-size:39px}.data-lesson .lesson-intro{min-height:155px}.data-lesson .lesson-tabs{gap:32px}.data-workbench{gap:25px}.data-preview{padding-left:25px}}
+@media(max-width:580px){.data-lesson main{padding:20px 21px 0}.data-lesson .site-header{padding:0 18px}.data-lesson .lesson-intro{padding-top:0;min-height:0;padding-bottom:22px}.data-lesson h1{font-size:34px;line-height:1.4}.data-lesson .intro-description{font-size:15px}.data-lesson .lesson-meta{font-size:11px;margin-bottom:14px;letter-spacing:0}.data-lesson .lesson-tabs{gap:12px}.data-lesson .section-heading h2{font-size:23px}.experiment-controls{grid-template-columns:1fr 1fr;gap:18px 15px;margin-top:22px}.experiment-controls>div:nth-child(3){grid-column:1/-1}.experiment-controls>button{grid-column:1/-1;justify-self:stretch}.experiment-controls label{font-size:14px}.prediction-row{align-items:stretch;gap:22px;margin-top:25px}.prediction-row fieldset{display:block;flex:auto;width:100%}.prediction-row legend{font-size:16px}.prediction-row label{font-size:14px;margin:15px 0}.prediction-row .button-primary{width:100%}.data-workbench{grid-template-columns:1fr;gap:25px;margin-top:30px}.data-preview{border-left:0;border-top:1px solid var(--line);padding:25px 0 0}.data-lesson .data-workbench pre{font-size:14px;min-height:0}.data-workbench h3{font-size:22px}.preview-list li{font-size:16px}.help-entry{display:block;padding:22px 0}.help-entry>span{display:block;font-size:20px;margin-bottom:18px}.help-entry button{font-size:14px;padding:6px 0;border-left:0;display:block;margin:4px 0}.data-lesson .article-body pre{padding:16px 14px;font-size:14px}.data-lesson table{font-size:13px}.data-lesson td,.data-lesson th{padding-right:12px;min-width:100px}.data-lesson .article-body h3{font-size:23px}.task-navigation{gap:17px}.task-navigation button{font-size:13px}.copy-status{display:block;margin:12px 0 0}}

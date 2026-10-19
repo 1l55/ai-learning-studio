@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="零基础读懂变量、对象与数组。先预测，再修改同名任务，理解数据、页面与身份的关系。"><title>变量、对象与数组 · AI 学习 03.04</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111212'/%3E%3Cpath d='M6 7q5-3 10 0 5-3 10 0v19q-5-3-10 0-5-3-10 0zm10 0v19' fill='none' stroke='%23baa171' stroke-width='2'/%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="data-lesson.css"><link rel="stylesheet" href="experiment-guidance.css"><script defer src="data-core.js"></script><script defer src="data-experiment.js"></script><script defer src="data-lesson.js"></script></head>
+<body class="data-lesson">
+<a class="skip-link" href="#lesson-panel">跳到学习内容</a>
+<header class="site-header"><a class="brand" href="data-literacy.html#guess"><svg viewBox="0 0 36 32" aria-hidden="true"><path d="M2 4Q10 0 18 5Q26 0 34 4V28Q26 24 18 29Q10 24 2 28ZM18 5V29"/></svg><span>AI 学习</span></a><nav class="header-nav" aria-label="主导航"><button data-dialog="path-dialog">学习路径</button><button data-dialog="glossary-dialog">术语手册</button></nav><div class="header-right"><button data-stage="practice">我的练习 <span aria-hidden="true">↗</span></button><button class="menu-toggle" id="menu-toggle" aria-label="打开本课目录" aria-expanded="false" aria-controls="course-rail">☰</button></div></header>
+<div class="layout"><aside class="course-rail" id="course-rail" aria-label="本节课程目录"><div class="rail-top"><p class="rail-caption">本节学习路径</p><p class="rail-subtitle">计算机与代码阅读</p></div><nav class="rail-nav" aria-label="学习环节"><button data-stage="guess"><span>01</span>先猜一猜</button><button data-stage="explain"><span>02</span>看懂原理</button><button data-stage="experiment"><span>03</span>动手实验</button><button data-stage="practice"><span>04</span>Codex 实践</button></nav><div class="rail-bottom"><p id="completion-state">本课尚未完成</p><p id="save-state">学习记录保存在当前浏览器</p><span>样课 · 03.04</span></div></aside><button class="rail-backdrop" id="rail-backdrop" aria-label="关闭本课目录" hidden></button>
+<main><section class="lesson-intro" aria-labelledby="lesson-title"><p class="lesson-meta">计算机与最小代码阅读 <span>/</span> 03.04</p><h1 id="lesson-title">一条任务，怎样变成页面内容？</h1><p class="intro-description">读懂变量、对象与数组，从修改一个值开始。</p></section><nav class="lesson-tabs" aria-label="切换教学环节"><button data-stage="guess">先猜一猜</button><button data-stage="explain">看懂原理</button><button data-stage="experiment">动手实验</button><button data-stage="practice">Codex 实践</button></nav>
+<div id="lesson-panel" tabindex="-1">
+<section class="stage" id="stage-guess" aria-labelledby="guess-title"><div class="section-heading"><span>01</span><div><h2 id="guess-title">同一个标题，是同一条任务吗？</h2><p>从一个实际问题开始，不需要先背语法。</p></div></div><details><summary>第一次读代码？先看起点与本课目标</summary><div class="article-body"><p>你不需要背代码，也不需要安装编程语言。先读完例子，再在配套实验中选目标、改一个值、看结果。独立 Codex 操作需要能打开练习项目；尚未完成环境准备，可以先学习正文。</p>
+<p>如果你已经做过任务清单，可能遇到过这些问题：改了文字，刷新却变回去；完成一条任务，另一条也被改了；页面上有两条同名任务，无法说清要修改哪条。</p>
+<p>本节先解决其中一个基础：<strong>程序里用什么表示“一条任务”，又怎样从一组任务中找到它。</strong> 页面更新和保存机制会指出职责边界，后续课程再展开实现。</p>
+<p>学完请用证据回答三件事：</p>
+<ul><li>能在一小段数据中找到某条任务的标题和完成状态。</li><li>能预测修改某个字段后，哪些内容应该变，哪些应该保持。</li><li>能向 Codex 指定一条同名任务，修改后检查另一条没有受影响。</li></ul></div></details><div class="article-body"><p>两条任务都叫“读一章书”，可能分别对应今天和明天的安排。标题相同，是否就能把它们当作同一条？</p><div class="table-scroll"><table><thead><tr><th>识别标记</th><th>标题</th><th>完成状态</th></tr></thead><tbody><tr><td>t01</td><td>读一章书</td><td>未完成</td></tr><tr><td>t02</td><td>读一章书</td><td>未完成</td></tr></tbody></table></div></div><form class="question-form" data-question="guess"><fieldset><legend>要把 t02 的标题改成“读第二章”，怎样描述更可靠？</legend><label class="answer"><input type="radio" name="guess" value="title"><span>找到标题为“读一章书”的任务，修改它的标题。</span></label><label class="answer"><input type="radio" name="guess" value="id"><span>找到 ID 为 t02 的任务，只改标题，保留其他字段与另一条任务。</span></label><label class="answer"><input type="radio" name="guess" value="position"><span>继续修改第二个位置，排序改变以后也沿用这个位置。</span></label></fieldset><button class="button-small" type="submit">提交判断 →</button><div class="feedback" id="feedback-guess" aria-live="polite" hidden></div></form><div class="next-row"><span>带着身份、位置和内容的区别往下学。</span><button class="button-primary" data-stage="explain">继续：看懂原理 →</button></div></section>
+<section class="stage" id="stage-explain" aria-labelledby="explain-title" hidden><div class="section-heading"><span>02</span><div><h2 id="explain-title">一个值、一条记录、一组记录</h2><p>每次只读与当前问题有关的一小段。</p></div></div><div class="article-body"><h3>2.1 变量：给程序里用到的值一个名字</h3>
+<p>先只看一行：</p>
+<pre><code>const title = &quot;读一章书&quot;;</code></pre>
+<p>从左到右读：用 <code>const</code> 声明一个名叫 <code>title</code> 的变量，让它关联文字“读一章书”。双引号中的内容是<strong>字符串</strong>，也就是文本值；这里的 <code>title</code> 是程序里的名字，不是直接显示在页面上的中文标签。</p>
+<p>你可以暂时把名字看作寻找值的标签。这个类比只帮助阅读：变量不是磁盘里的一个文件，声明也没有替你创建输入框或保存记录。<code>const</code> 在这里限制后续给这个名字重新指定另一个值；它并不保证关联对象的内部内容不能改变，后面会用一个反例说明。<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">语言依据：MDN const</a></p>
+<h3>2.2 对象：把同一件事的相关信息放在一起</h3>
+<p>任务不只有标题，还要知道是哪一条、有没有完成：</p>
+<pre><code>const task = {
+  id: &quot;t01&quot;,
+  title: &quot;读一章书&quot;,
+  done: false
+};</code></pre>
+<p>大括号 <code>{ }</code> 围住了一个<strong>对象</strong>。在这个例子中，它把一条任务的相关信息组织在一起。每一项由名字和对应的值组成：</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">写法</th><th scope="col">本例中的意思</th><th scope="col">修改前要问什么</th></tr></thead><tbody><tr><td><code>id: &quot;t01&quot;</code></td><td>识别这条记录的标记</td><td>我是否找到了正确的任务？</td></tr><tr><td><code>title: &quot;读一章书&quot;</code></td><td>显示给使用者的标题</td><td>只想改文字，还是连任务身份也要变？</td></tr><tr><td><code>done: false</code></td><td>目前未完成</td><td>本次是否应该改变完成状态？</td></tr></tbody></table></div>
+<p>这里把这些属性称为“字段”，方便与表格中的一列对应。对象也能表示其他事物，并非每个对象都是任务记录。属性名、冒号、值之间的关系，可以对照 <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics">MDN 对象基础</a> 回看。</p>
+<p><code>false</code> 和 <code>true</code> 是<strong>布尔值</strong>，表达两种逻辑状态。本练习约定 <code>false</code> 为未完成，<code>true</code> 为已完成。引号里的 <code>&quot;false&quot;</code> 则是文本，不能在需要布尔值的位置随意替换。字段名 <code>done</code> 是项目采用的约定；换成 <code>completed</code>，读取它的代码也必须采用相同约定。</p>
+<h3>2.3 数组：让多条任务成为一组有顺序的数据</h3>
+<pre><code>const tasks = [
+  { id: &quot;t01&quot;, title: &quot;读一章书&quot;, done: false },
+  { id: &quot;t02&quot;, title: &quot;读一章书&quot;, done: false }
+];</code></pre>
+<p>方括号 <code>[ ]</code> 围住一个<strong>数组</strong>，里面依次放了两个对象。<code>tasks</code> 是整组数据的变量名，每对大括号是其中一条记录。这里用英文复数帮助人阅读；给变量加上 <code>s</code> 不会自动让它变成数组。</p>
+<p>逐层读：一组任务 <code>tasks</code> → 其中一条任务 → 那条任务的某个字段。数组按位置访问元素，JavaScript 的位置编号从 <code>0</code> 开始，叫作<strong>索引</strong>：第一条是 <code>tasks[0]</code>，第二条是 <code>tasks[1]</code>。这解释的是访问规则，不意味着第一条的 ID 必须是 0。<a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Arrays">语言依据：MDN 数组</a></p>
+<h3>2.4 用一行小改动，读出目标和范围</h3>
+<p>下面是独立的教学片段，先预测，不用急着运行：</p>
+<pre><code>const tasks = [
+  { id: &quot;t01&quot;, title: &quot;读一章书&quot;, done: false },
+  { id: &quot;t02&quot;, title: &quot;读一章书&quot;, done: false }
+];
+tasks[1].title = &quot;读第二章&quot;;</code></pre>
+<p>从左往右：找到 <code>tasks</code> 的索引 1，也就是当前第二个对象；点号后的 <code>title</code> 指定其标题字段；赋值让这个字段得到新文本。逗号没有把两条记录合成一条；本例分别创建了两个对象。</p>
+<details>
+<summary>展开本例的预期数据</summary>
+<div class="table-scroll"><table><thead><tr><th scope="col">记录</th><th scope="col">标题</th><th scope="col">完成状态</th></tr></thead><tbody><tr><td>t01</td><td>读一章书</td><td>未完成</td></tr><tr><td>t02</td><td>读第二章</td><td>未完成</td></tr></tbody></table></div>
+<p>只有 t02 的标题改变。它的 ID 和完成状态，以及 t01 的全部字段，都应保持。</p>
+</details>
+<p>这里按位置操作，是为了读懂语法。实际创作要先按稳定 ID 定位目标；排序以后不能继续假定索引 1 就是 t02。怎样写查找和处理函数，在下一课展开，本课先通过带标注的实验观察。</p>
+<h3>2.5 标题、索引和 ID：内容、位置、身份</h3>
+<p>把两条记录的顺序交换后，第一条变成 t02，第二条变成 t01。它们移动了位置，身份没有因为移动而改变。</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">你用来寻找的依据</th><th scope="col">排序后会怎样</th><th scope="col">使用边界</th></tr></thead><tbody><tr><td>标题“读一章书”</td><td>两条仍可能同名</td><td>可用于搜索，不能假定唯一。</td></tr><tr><td>当前第二个位置</td><td>可能已经换成另一条任务</td><td>适合读取当前顺序，不能独立承担稳定身份。</td></tr><tr><td>ID 为 t02</td><td>仍可识别那条记录</td><td>前提是系统正确生成、保留并检查唯一性。</td></tr></tbody></table></div>
+<p>ID 也不是权限证明。知道一条记录的 ID，不代表有权读取或修改它；用户隔离留到模块 10 实际验证。</p>
+<h3>2.6 数据改变、页面更新、刷新保留，是不同的动作</h3>
+<p>你刚才修改的是 JavaScript 中的数据。页面要反映这个变化，还需要负责显示的代码更新浏览器里的页面结构；这个过程常称为<strong>渲染</strong>。在本课实验中，“运行并核对”会执行选定操作，然后重新绘制预览，因此你能同时观察数据与页面的对应关系。</p>
+<p>另一种程序可能改了数据却没有更新显示。反过来，只在浏览器检查工具中改一行可见文字，也不等于改了程序的任务数据。浏览器用 DOM 表示可操作的页面结构；本节先认识它与数据的区别，不要求手写 DOM 操作。<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">机制依据：MDN DOM</a></p>
+<p>保存还需要额外机制：修改运行中的记录，不会自动写回源文件；重新加载若重新执行初始数据，就会回到起点。浏览器持久保存、服务端保存和跨设备同步在模块 07—09 分别讲解。本课实验刻意不保存任务修改，刷新后恢复初始数据；学习记录是另一份数据，不能用“我的答案还在”证明“任务已经保存”。</p>
+<details><summary>深入一点：为什么 const 对象还能修改？</summary>
+<pre><code>const task = { id: &quot;t01&quot;, title: &quot;读一章书&quot;, done: false };
+task.done = true;</code></pre>
+<p>这段操作没有给变量 <code>task</code> 重新指定另一个对象，而是修改当前对象里的一个字段，因此可以执行。<code>const task</code> 不等于“这条任务的所有内容被冻结”。</p>
+<p>两个名字或两个数组元素也可能引用同一个对象；那时通过其中一个修改，会从另一处看到变化。本课初始数据是两个分别创建的对象；不要把本例“只变一条”推广成所有代码的保证。判断真实项目时，应检查创建和引用关系。这个深入问题可以回访，不作为第一次实验的前置条件。</p></details></div><label class="read-row"><input type="checkbox" id="read-check"><span>我已阅读并尝试解释：变量、对象、数组，以及数据和页面的区别。</span></label><div class="next-row"><span>用实际结果核对自己的解释。</span><button class="button-primary" data-stage="experiment">进入数据实验 →</button></div></section>
+<section class="stage experiment-stage" id="stage-experiment" aria-labelledby="experiment-title" hidden>
+<p class="experiment-context" id="experiment-context">变量、对象与数组 / 实验 1 / 4 · 改标题</p>
+<h1 class="experiment-heading" id="experiment-title" tabindex="-1">先看数据，再预测这次改动</h1>
+<p class="experiment-goal" id="experiment-goal">把 ID 为 t02 的任务标题改成“读第二章”。</p>
+<p class="experiment-preserve" id="experiment-preserve">保留它的 ID、完成状态，以及另一条任务。</p>
+<ol class="flow-steps" aria-label="本轮实验步骤"><li data-flow-step="1"><span class="flow-number">1</span><span>准备改动</span></li><li data-flow-step="2"><span class="flow-number">2</span><span>先作预测</span></li><li data-flow-step="3"><span class="flow-number">3</span><span>核对结果</span></li></ol>
+<form id="experiment-form">
+<div id="experiment-controls"><div class="experiment-controls">
+<div id="target-control"><label for="target-task">目标任务</label><select id="target-task"><option value="t01">t01（第 1 条）</option><option value="t02" selected>t02（第 2 条）</option></select></div>
+<div id="field-control"><label for="target-field">修改字段</label><select id="target-field"><option value="title">title · 标题</option><option value="done">done · 完成状态</option></select></div>
+<div id="new-value-control"><label for="new-value">新值</label><input id="new-value" value="读第二章" maxlength="80" autocomplete="off" aria-describedby="draft-note experiment-feedback"></div>
+<div id="new-state-control" hidden><label for="new-state">新值</label><select id="new-state"><option value="true">true · 已完成</option><option value="false">false · 未完成</option></select></div>
+<div id="new-id-control" hidden><label for="new-id">新记录 ID</label><input id="new-id" value="t03" readonly></div>
+<button type="button" id="reset-data" class="restore-link">恢复起点</button></div>
+<p class="draft-note" id="draft-note">当前是待执行的改动，下面的数据还没有变化。</p></div>
+<div id="execution-summary" class="execution-summary" hidden><span class="execution-label">本次执行</span><div id="execution-values" class="execution-values"></div><button type="button" class="restore-link" id="result-reset">恢复起点再试</button></div>
+<div id="experiment-feedback" class="feedback" role="alert" hidden></div>
+<div class="data-workbench"><div><div class="workbench-heading"><h3 id="data-title">当前数据</h3><p id="data-focus">看这里：t02 的 title</p></div><pre id="current-data" tabindex="0" aria-label="当前数据与差异"></pre><p class="data-caption" id="data-caption"></p></div>
+<div class="data-preview"><h3 id="preview-title">当前页面</h3><ul class="preview-list" id="task-preview" aria-label="任务预览"></ul><p class="preview-note" id="preview-note">标题相同，ID 不同。</p></div></div>
+<div id="prediction-area" class="guidance-action"><fieldset id="prediction-group"><legend>你预计运行后，哪部分会变？</legend></fieldset><div class="run-action"><button class="button-primary" type="submit">提交预测并运行 <span aria-hidden="true">→</span></button><p>先选一个预测，再运行观察。</p></div></div>
+</form>
+<div id="verification-area" class="verification-area" hidden><h2 id="verification-title">再核对这三处，就能解释结果</h2><p id="result-detail" class="result-detail"></p><div class="verification-bottom"><ul id="verification-list" aria-label="本次数据核对结果"></ul><div class="next-actions"><button type="button" class="restore-link" id="retry-title">再试一个不同标题</button><div><button class="button-primary" type="button" id="experiment-next">继续实验 2：改完成状态 →</button><p id="next-explanation">下一轮，只改变完成状态，观察标题是否保留。</p></div></div></div>
+<details id="duplicate-test" hidden><summary>额外观察：同一个 ID 再提交一次会怎样？</summary><p>当前已有 t03。直接检查一次重复提交，核对它被拒绝时已有记录是否保持。</p><button class="button-small" type="button" id="check-duplicate">验证重复 ID 被拒绝</button><p id="duplicate-feedback" role="status"></p></details></div>
+<div class="comparison-box" id="index-comparison" hidden></div>
+<div class="guidance-help-row"><details class="guidance-help"><summary>不确定？先看一条提示</summary><div class="help-entry"><button data-help="help-target">找不到目标任务</button><button data-help="help-index">为什么从 0 开始计数</button><button data-help="help-change">修改后没变化</button></div><div class="help-box"><details id="help-target"><summary>找不到目标任务</summary><p>先看每条记录的 id，确认它在当前列表中只出现一次。标题相同不表示身份相同。</p><details><summary>再解释一步</summary><p>tasks 表示整组记录；对象保存一条记录的 id、title 和 done。修改 title 时，不应顺带换 ID。</p></details><details><summary>看完整演示步骤</summary><ol><li>恢复初始数据，找到 t01 与 t02。</li><li>目标选 t02、字段选 title、新值填“读第二章”。</li><li>先预测，再运行；核对 t01 没变，t02 只改标题。</li></ol></details></details>
+<details id="help-index"><summary>为什么从 0 开始计数</summary><p>这是 JavaScript 的数组访问规则：第一个位置用 0，第二个用 1。ID 则是记录的身份，不必等于位置编号。</p><details><summary>再解释一步</summary><p><code>tasks[1].title</code> 从左读：tasks 这组数据、当前第二个对象、它的 title 字段。</p></details><details><summary>用调序验证</summary><p>进入实验 4，先对调顺序。t02 到了第一行，索引 1 此时指向 t01；按 t02 定位仍能找到原记录。</p></details></details>
+<details id="help-change"><summary>修改后没变化</summary><p>输入只是草稿。先选预测，再点“运行并核对”；反馈会说明成功、无效输入或新旧值相同。</p><details><summary>再解释一步</summary><p>数据改变后还需要代码更新页面。本站实验会同时更新两处；独立项目则需要分别核对数据、显示和保存机制。</p></details><details><summary>恢复并重新核对</summary><p>恢复起点，每次只改一个值。记录目标、字段、新值、实际结果；若仍不同，再提供相关代码、打开地址与错误。刷新会重置本页实验数据，学习记录单独保存。</p></details></details></div>
+</details><p>本地教学实验 · 不调用 AI · 实验数据刷新后重置</p></div>
+<details id="experiment-review" class="experiment-review" hidden><summary>回看其他实验</summary><nav class="task-navigation" aria-label="回看小实验"><button data-task="title">1 · 改标题</button><button data-task="state">2 · 改完成状态</button><button data-task="append">3 · 增加记录</button><button data-task="order">4 · 调序再修改</button></nav></details>
+</section>
+<section class="stage" id="stage-practice" aria-labelledby="practice-title" hidden><div class="section-heading"><span>04</span><div><h2 id="practice-title">做一次可核对的小修改</h2><p>在独立练习副本中操作，再用证据验收。</p></div></div><a class="lesson-link" href="examples/data-literacy/index.html" target="_blank" rel="noopener">打开配套练习：两条同名任务 ↗</a><a class="lesson-link" href="examples/03-04-data-literacy.zip" download="03-04-data-literacy.zip">下载独立练习包 · 解压后打开 index.html ↓</a><p class="preview-note">下载后先解压整个文件夹，再让 Codex 打开解压后的 data-literacy 目录。不要直接修改压缩包中的文件。</p><p class="preview-note">练习目录：ai-learning-mvp / examples / data-literacy。复制整个目录后，再让 Codex 打开副本；任务数据在 tasks.js，显示逻辑在 render.js。</p><div class="article-body"><p>网页实验帮助你认识关系。接下来把同样的判断用到一个独立练习文件中，才能检查自己是否会与 Codex 协作。</p>
+<h3>4.1 起点与边界</h3>
+<p>使用课程配套的独立练习项目，内有可以显示两条任务的页面和上面同结构的初始数据。不在私人项目中试错，不安装与本课无关的依赖，不新增数据库或联网服务。点击下方“打开配套练习”，可看到两条同名任务。请先复制整个 data-literacy 练习目录作为自己的项目，再让 Codex 修改副本。</p>
+<p>先确认当前练习目录，再让 Codex 读取页面与任务数据。读完后请它指出：数据在哪个文件、由哪段代码显示；如果没有找到，应说明实际读到了什么，而非继续猜。</p>
+<h3>4.2 第一次只请它解释</h3>
+<p>可复制的任务说明：</p>
+<blockquote>请只阅读当前练习目录，先不要修改。找到两条任务的数据和负责显示它们的代码，用中文指出 tasks、每条任务对象、id、title、done 的用途。说明你实际读取的文件路径，给出与解释有关的短代码。指出哪一项决定任务身份，哪一项只是当前显示文字。</blockquote>
+<p>核对它引用的文件真实存在、字段与练习一致。不要仅凭回答“我明白了”继续。</p>
+<h3>4.3 提出小改动，并检查没有扩大范围</h3>
+<blockquote>请只把 ID 为 t02 的任务标题改为“读第二章”。保留它的 ID 和 done，保留 t01 的全部字段和两条记录的数量。不要按标题批量替换，不要改变布局或引入新功能。说明修改的是初始数据、运行状态还是保存的数据，并给出我应该怎样打开和检查结果。</blockquote>
+<p>对照文件差异阅读改变的那一处。官方文档说明，本地审阅窗反映 Git 仓库的改动范围，可能包含其他来源的修改；因此先核对当前文件和范围，不能把窗中全部变化都当作这一次任务产生的变化。<a href="https://learn.chatgpt.com/docs/code-review?surface=app#what-changes-it-shows">操作依据：OpenAI 本地改动审阅说明</a></p>
+<p>运行后，至少核对两条任务。若修改的是源文件中的初始数据，重新载入该文件时通常会读到新标题；若项目会用保存的数据覆盖初始数据，应先确认实际数据来源。本课配套练习不启用持久存储，以减少初次操作的分支。</p>
+<h3>4.4 换个条件再做，检查是否只会照做</h3>
+<p>先保存可恢复的练习副本，再把两条任务顺序对调。向 Codex 提出：把 t02 的完成状态设为已完成，保留标题、ID、顺序和 t01。</p>
+<p>这次不再提供完整步骤。应能检查：即使 t02 已是第一行，也只改变它的 done；“改对了当前第二行”不构成通过。</p>
+<h3>4.5 保留证据，描述自己仍不理解的部分</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">要交出的证据</th><th scope="col">自己核对什么</th></tr></thead><tbody><tr><td>修改前后相关数据或差异</td><td>目标准确，没有多改字段或记录。</td></tr><tr><td>运行后的两条任务</td><td>数据变化确实显示，另一条保持。</td></tr><tr><td>调序后的再次修改</td><td>定位依赖身份，能够适应位置变化。</td></tr><tr><td>一段自己的说明</td><td>解释变量、对象、数组和页面分别负责什么。</td></tr></tbody></table></div>
+<p>课内可以记录“我已自行验收”。系统不会因为你看完截图或复制过提示词，就自动确认你完成了 Codex 操作。</p></div>
+<div class="copy-block"><h3>把说明带到 Codex</h3><pre id="codex-prompt" tabindex="0">请只阅读当前练习目录，先不要修改。找到两条任务的数据和负责显示它们的代码，用中文指出 tasks、每条任务对象、id、title、done 的用途。说明你实际读取的文件路径，给出与解释有关的短代码。指出哪一项决定任务身份，哪一项只是当前显示文字。</pre><button class="button-small" id="copy-prompt">复制当前说明</button><span id="copy-status" class="copy-status" role="status"></span><div class="task-navigation"><button data-prompt="0">先读懂文件</button><button data-prompt="1">只改 t02 标题</button></div></div>
+<div id="practice-shots"><h3>实操配图与证据</h3><p class="shot-note">当前工具无法获取原生应用窗口，本例的 Codex 桌面操作图尚未采集。你可以先按文字步骤和独立练习包试学；本页没有用生成图代替实操截图，课内自检也不代表已验证外部操作。</p></div>
+<label class="read-row"><input type="checkbox" id="practice-check"><span>我已在自己的练习副本中核对文件差异、两条任务，以及调序后的再次修改（仅记自行验收）。</span></label>
+<div class="transfer-section"><div class="section-heading"><span>↗</span><div><h2>换个需求，检查是否读懂</h2><p>不是记住某一条答案，而是解释条件变化后的做法。</p></div></div><pre><code>const book = { id: "b07", name: "山海经", finished: false };</code></pre><form class="question-form" data-question="record"><fieldset><legend>读书记录里，把 name 从“山海经”改为“山海经·校注”，应该怎样处理？</legend><label class="answer"><input type="radio" name="record" value="identity"><span>同时换一个 ID，让记录的名字和身份一致。</span></label><label class="answer"><input type="radio" name="record" value="field"><span>只改 name；原先的 id 和 finished 保持。</span></label><label class="answer"><input type="radio" name="record" value="group"><span>把整条记录改成只有名字的一组文字。</span></label></fieldset><button class="button-small" type="submit">提交判断 →</button><div class="feedback" id="feedback-record" aria-live="polite" hidden></div></form><form class="question-form" data-question="identity"><fieldset><legend>两条同名记录重新排序后，要继续修改原来的那条记录，应依据什么？</legend><label class="answer"><input type="radio" name="identity" value="position"><span>上一次记录的第二个位置。</span></label><label class="answer"><input type="radio" name="identity" value="title"><span>两条记录共同的书名。</span></label><label class="answer"><input type="radio" name="identity" value="stable"><span>稳定且唯一的 ID，并核对对应关系。</span></label></fieldset><button class="button-small" type="submit">提交判断 →</button><div class="feedback" id="feedback-identity" aria-live="polite" hidden></div></form><form class="question-form" data-question="render"><fieldset><legend>数据中的 done 已改变，页面仍显示未完成，下一步怎样判断？</legend><label class="answer"><input type="radio" name="render" value="assignment"><span>先认定赋值失败，重写数据修改代码。</span></label><label class="answer"><input type="radio" name="render" value="display"><span>核对同一份数据和页面，再检查读取与显示更新。</span></label><label class="answer"><input type="radio" name="render" value="save"><span>先接入数据库，让显示自动恢复正常。</span></label></fieldset><button class="button-small" type="submit">提交判断 →</button><div class="feedback" id="feedback-render" aria-live="polite" hidden></div></form><p class="milestone-line" id="learning-progress" aria-live="polite"></p><div class="completion-row"><button class="button-primary" id="complete-lesson">标记阅读与课内练习完成</button><p id="completion-message" aria-live="polite"></p></div><p class="preview-note">完成需：阅读原理、四个课内实验及三题理解自检。外部 Codex 实操单独记为自行验收。</p></div></section>
+</div>
+<footer class="lesson-footer"><a href="course.html">返回完整课程总览</a><button class="text-link" data-dialog="sources-dialog">资料与来源 ↗</button><span>本地教学实验 · 不调用模型</span></footer></main></div>
+<dialog id="path-dialog" aria-labelledby="path-title"><div class="dialog-header"><h2 id="path-title">学习路径</h2><button data-close-dialog aria-label="关闭学习路径">×</button></div><p>课程总纲 v3：先建立通用 AI 判断能力，再按目标制作本地或联网作品。完整网站已提供 13 模块、80 节主课。</p><a class="lesson-link" href="context-lesson.html">05.02 · AI 为什么会答非所问？</a><a class="lesson-link" href="data-literacy.html#guess">03.04 · 变量、对象与数组（当前）</a><a class="lesson-link" href="learn.html?id=03.05&amp;route=R3">继续 03.05：函数、条件与事件 →</a><a class="lesson-link" href="course.html">返回完整课程总览 →</a><details class="restart-section"><summary>重新学习当前样课</summary><p>只清除 03.04 的记录，不影响上下文样课或文件。</p><button class="button-small" id="restart-lesson">清除本课记录并回到开始</button></details></dialog>
+<dialog id="glossary-dialog" aria-labelledby="glossary-title"><div class="dialog-header"><h2 id="glossary-title">本课术语</h2><button data-close-dialog aria-label="关闭术语手册">×</button></div><dl class="concept-list"><div><dt>变量</dt><dd>程序中用名字关联一个值；名字不会自动成为页面或文件。</dd></div><div><dt>对象与字段</dt><dd>对象可组织一条记录的相关信息；本例的 id、title、done 是职责不同的字段。</dd></div><div><dt>数组与索引</dt><dd>数组组织一组有序元素；索引是当前位置编号，从 0 开始。</dd></div><div><dt>ID</dt><dd>用来识别记录的标记；需要正确保留与保证唯一，不自动提供访问权限。</dd></div><div><dt>布尔值</dt><dd>true / false 两种逻辑状态，不等于引号中的同名文字。</dd></div><div><dt>渲染与保存</dt><dd>渲染更新可见页面；保存让数据在约定范围内重新载入。数据变化不自动完成这两件事。</dd></div></dl></dialog>
+<dialog id="sources-dialog" aria-labelledby="sources-title"><div class="dialog-header"><h2 id="sources-title">资料与来源</h2><button data-close-dialog aria-label="关闭资料来源">×</button></div><p>中文内容为本课任务情境编写。核对日期：2026-10-15。</p><ul class="source-list"><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">MDN · const</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics">MDN · 对象基础</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Arrays">MDN · 数组</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">MDN · DOM</a></li><li><a href="https://learn.chatgpt.com/docs/code-review?surface=app">OpenAI · 改动审阅</a></li></ul></dialog>
+<noscript><p class="noscript-message">本页实验与环节切换需要启用 JavaScript。可以先阅读课程内容稿。</p></noscript>
+</body></html>

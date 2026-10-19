@@ -1,0 +1,13 @@
+{
+  "name": "ai-learning-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "面向零基础普通人的 AI 创作学习网站，13 模块、80 节主课。",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node scripts/serve-course.cjs",
+    "build": "node scripts/build-course.cjs",
+    "test": "node --test ai-learning-mvp/tests/*.test.cjs docs/curriculum/lessons/tests/*.test.cjs tests/*.test.cjs",
+    "release:prepare": "node scripts/prepare-release.cjs"
+  }
+}

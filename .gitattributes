@@ -1,0 +1,6 @@
+# Preserve reviewed release bytes and checksums across systems.
+* -text
+*.png binary
+*.jpg binary
+*.webp binary
+*.zip binary

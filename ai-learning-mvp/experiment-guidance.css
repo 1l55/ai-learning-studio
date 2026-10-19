@@ -1,0 +1,88 @@
+/* Approved before/after experiment concepts; other lesson stages stay intact. */
+.is-experiment .lesson-intro,.is-experiment .lesson-tabs{display:none}
+.is-experiment main{padding-top:32px}
+.is-experiment .experiment-stage{padding-top:0}
+.experiment-context{font-size:16px;margin:0 0 14px;letter-spacing:.3px}
+.data-lesson .experiment-heading{font:600 clamp(34px,4.15vw,64px)/1.2 var(--serif);margin:0 0 12px;letter-spacing:0}
+.experiment-heading:focus{outline:none}
+.experiment-goal{font:600 27px/1.6 var(--serif);margin:0 0 3px;overflow-wrap:anywhere}
+.experiment-preserve{font-size:20px;color:var(--ink);margin:0;min-height:0}
+.experiment-preserve:empty{display:none}
+.flow-steps{display:flex;list-style:none;padding:0;margin:18px 0 24px;gap:24px}
+.flow-steps li{display:flex;align-items:center;position:relative;gap:15px;flex:1;color:var(--muted);font-size:20px;padding-bottom:10px}
+.flow-steps li:not(:last-child):after{content:'';height:1px;background:#77776f;flex:1;margin-left:15px}
+.flow-number{width:34px;height:34px;border:1px solid #8e8c83;border-radius:50%;display:grid;place-items:center;font:23px/1 var(--serif);flex:0 0 auto}
+.flow-steps .is-current{color:var(--gold)}
+.flow-steps .is-current:before{content:'';position:absolute;left:0;bottom:0;width:150px;border-bottom:2px solid var(--gold)}
+.flow-steps .is-current .flow-number,.flow-steps .is-done .flow-number{border-color:var(--gold);color:var(--gold)}
+.flow-steps .is-done{color:var(--ink)}
+.is-experiment .experiment-controls{margin:0;grid-template-columns:1fr 1fr 1.12fr auto;gap:28px}
+.is-experiment .experiment-controls label{font-size:18px;line-height:1.5;margin-bottom:8px}
+.is-experiment .experiment-controls input,.is-experiment .experiment-controls select{height:44px;border-color:#94938c;font-size:18px;background:#141515}
+.restore-link{padding:3px 0;color:var(--gold);text-decoration:underline;text-underline-offset:5px;font-size:16px;text-align:left}
+.is-experiment .experiment-controls>.restore-link{min-height:44px;margin-left:15px;padding:3px 14px;white-space:nowrap}
+.draft-note{font-size:15px;margin:8px 0 0}
+.is-experiment .data-workbench{grid-template-columns:1fr 1fr;margin:23px 0 18px;gap:38px}
+.workbench-heading{display:flex;align-items:baseline;gap:28px;flex-wrap:wrap;margin-bottom:12px}
+.is-experiment .data-workbench h3{font:600 28px/1.5 var(--serif);margin:0 0 12px}
+.is-experiment .workbench-heading h3{margin:0}
+.workbench-heading p{font-size:14px;margin:0;color:var(--gold)}
+.is-experiment .data-preview{padding-left:38px}
+.data-lesson.is-experiment .data-workbench pre{font:18px/1.55 Consolas,"Cascadia Code",monospace;margin:0 0 12px;min-height:0;overflow-wrap:anywhere;white-space:pre-wrap;letter-spacing:0}
+.code-line{display:flex;align-items:baseline;min-width:0;white-space:pre-wrap;position:relative}
+.code-number{width:33px;flex:0 0 33px;user-select:none;color:#a8a7a2;background:#ffffff03;text-align:center;margin-right:11px;font-size:15px}
+.code-content{min-width:0;overflow-wrap:anywhere}
+.code-line.is-target:before{content:'';position:absolute;left:46px;top:4px;bottom:3px;border-left:2px solid var(--gold)}
+.code-content mark{background:transparent;color:#e3c16a;border-bottom:2px solid var(--gold);padding-bottom:4px}
+.is-experiment .preview-list li{position:relative;gap:24px;min-height:63px;padding:10px 0 10px 62px}
+.is-experiment .preview-list li.is-target-record:before{content:'';position:absolute;left:0;top:12px;bottom:12px;border-left:3px solid var(--gold)}
+.is-experiment .preview-list .task-label{font-size:20px}
+.is-experiment .preview-list .task-id{font-size:16px;color:var(--ink)}
+.record-note{font-size:14px;color:var(--muted);min-width:70px;text-align:right}
+.is-target-record .record-note{color:var(--gold)}
+.is-target-record:has(.record-note) .task-label{color:var(--gold)}
+.is-experiment .preview-note{font-size:15px;margin-top:14px;color:var(--ink)}
+.is-experiment .data-caption{font-size:15px;min-height:0;margin:8px 0 0}
+.guidance-action{display:grid;grid-template-columns:1fr auto;gap:25px;border-top:1px solid #55554b;padding-top:16px;align-items:center}
+.guidance-action legend{font:600 28px/1.5 var(--serif);margin-bottom:9px;float:none}
+.guidance-action label{display:flex;align-items:center;gap:20px;font-size:18px;line-height:1.6;margin:8px 0;cursor:pointer}
+.guidance-action input{width:24px;height:24px;margin:0;flex:0 0 24px}
+.guidance-action input[type=radio]:checked:after{inset:5px}
+.run-action{padding-top:35px}
+.is-experiment .button-primary{font-size:18px;padding:13px 24px;min-height:58px;min-width:280px}
+.run-action p{font-size:14px;margin:8px 0 0}
+.execution-summary{display:flex;align-items:center;gap:28px;background:#ffffff03;border:1px solid var(--line);padding:13px 20px;border-radius:2px;margin:0 0 12px}
+.execution-label{font:600 25px var(--serif);white-space:nowrap}
+.execution-values{display:flex;gap:18px;align-items:center;min-width:0;flex-wrap:wrap}
+.execution-values>span{display:flex;align-items:center;gap:18px;font-size:18px;overflow-wrap:anywhere;min-width:0}
+.execution-values>span:not(:first-child):before{content:'→';color:var(--muted)}
+.execution-values .execution-new{color:#e3c16a}
+.execution-summary>.restore-link{margin-left:auto;white-space:nowrap;border-left:1px solid var(--line);padding-left:25px}
+.diff-before{color:#aaa9a3}.diff-before>.code-content,.diff-before>span:last-child{text-decoration:line-through}
+.diff-after{color:#dfbc69}
+.diff-sign{display:inline-block;width:30px;flex:0 0 30px;text-decoration:none!important}
+.diff-before .diff-sign{color:#d48375}.diff-after .diff-sign{color:#e1bf61}
+.verification-area{border-top:1px solid #55554b;padding-top:15px}
+.verification-area h2{font:600 28px/1.5 var(--serif);margin:0 0 10px}
+.verification-bottom{display:flex;gap:20px;justify-content:space-between;align-items:center}
+.verification-bottom ul{list-style:none;margin:0;padding:0;min-width:0}
+.verification-bottom li{position:relative;padding:4px 0 4px 55px;font-size:18px;line-height:1.6;overflow-wrap:anywhere}
+.verification-bottom li:before{content:'✓';color:var(--gold);position:absolute;left:4px;font-size:23px}
+.next-actions{display:flex;align-items:center;gap:30px;margin-left:auto}
+.next-actions>.restore-link{white-space:nowrap}
+.next-actions>div{min-width:0}
+.next-actions p{font-size:13px;line-height:1.8;margin:8px 0 0;max-width:330px}
+.result-detail{border-left:2px solid var(--gold);padding:9px 15px;font-size:15px;margin:12px 0 18px}
+.guidance-help-row{display:flex;align-items:baseline;justify-content:space-between;gap:25px;border-top:1px solid #55554b;margin-top:24px;padding:16px 0}
+.guidance-help-row>p{font-size:13px;line-height:1.8;margin:0;white-space:nowrap;color:var(--muted)}
+.data-lesson .guidance-help{margin:0;padding:0;border:0;flex:1}
+.guidance-help>summary{font-size:19px;color:var(--ink);font-weight:600}
+.guidance-help>summary::marker{color:var(--gold)}
+.guidance-help .help-entry{padding-top:0;margin-top:0;border:0;gap:18px}
+.guidance-help .help-entry button{padding-left:0;border:0;color:var(--gold)}
+.data-lesson .experiment-review{font-size:14px;margin:0 0 14px;padding:10px 0;border-color:var(--line)}
+.experiment-review .task-navigation{margin:10px 0 0;border:0}
+.is-experiment .lesson-footer{margin-top:8px}
+@media(max-width:1300px){.next-actions{gap:18px;flex-wrap:wrap;justify-content:flex-end}.verification-bottom{align-items:flex-start}.next-actions>.restore-link{font-size:14px}.is-experiment .preview-list li{padding-left:20px;gap:15px}.flow-steps{gap:15px}.flow-steps li{font-size:18px;gap:12px}.flow-steps li:not(:last-child):after{margin-left:5px}.experiment-goal{font-size:24px}.experiment-preserve{font-size:18px}.is-experiment .experiment-controls{gap:20px}.record-note{font-size:12px;min-width:55px}}
+@media(max-width:1000px){.is-experiment .experiment-controls{grid-template-columns:1fr 1fr}.is-experiment .experiment-controls>div:nth-child(3){grid-column:auto}.is-experiment .experiment-controls>.restore-link{grid-column:auto;justify-self:end}.is-experiment .data-workbench{gap:25px}.is-experiment .data-preview{padding-left:25px}.data-lesson.is-experiment .data-workbench pre{font-size:15px}.is-experiment .preview-list .task-label{font-size:17px}.is-experiment .preview-list .task-id{font-size:13px}.is-experiment .button-primary{min-width:0;font-size:16px;padding:11px 19px}.guidance-help-row{display:block}.guidance-help-row>p{margin-top:15px;white-space:normal}.verification-bottom li{font-size:16px;padding-left:33px}.workbench-heading{gap:10px}.verification-area h2,.guidance-action legend{font-size:24px}.next-actions{max-width:280px}}
+@media(max-width:580px){.is-experiment main{padding-top:23px}.data-lesson .experiment-heading{font-size:33px;line-height:1.35;margin-bottom:16px}.experiment-context{font-size:12px;line-height:1.8;margin-bottom:16px}.experiment-goal{font-size:21px;line-height:1.7}.experiment-preserve{font-size:15px;line-height:1.9;margin-top:5px}.flow-steps{margin:22px 0;gap:9px}.flow-steps li{font-size:13px;gap:7px;padding-bottom:12px;flex-wrap:wrap}.flow-steps li:not(:last-child):after{display:none}.flow-number{width:25px;height:25px;font-size:17px}.flow-steps .is-current:before{width:100%}.is-experiment .experiment-controls{gap:16px 14px}.is-experiment .experiment-controls label{font-size:14px}.is-experiment .experiment-controls input,.is-experiment .experiment-controls select{font-size:16px}.is-experiment .experiment-controls>div:nth-child(3){grid-column:1/-1}.is-experiment .experiment-controls>.restore-link{grid-column:1/-1;justify-self:end;padding:0;margin:0;min-height:25px;font-size:14px}.draft-note{font-size:13px;line-height:1.9}.is-experiment .data-workbench{grid-template-columns:1fr;margin-top:23px;gap:20px}.is-experiment .data-preview{border-left:0;border-top:1px solid var(--line);padding:19px 0 0}.is-experiment .data-workbench h3{font-size:23px}.workbench-heading p{font-size:12px}.data-lesson.is-experiment .data-workbench pre{font-size:14px;line-height:1.9}.code-number{width:22px;flex-basis:22px;margin-right:7px;font-size:12px}.code-line.is-target:before{left:29px}.is-experiment .preview-list li{padding-left:14px;min-height:59px}.is-experiment .preview-list .task-label{font-size:17px}.is-experiment .preview-note,.is-experiment .data-caption{font-size:13px}.record-note{font-size:11px;min-width:48px}.guidance-action{grid-template-columns:1fr;gap:18px}.guidance-action legend{font-size:23px;margin-bottom:15px}.guidance-action label{font-size:15px;gap:13px;margin:14px 0;line-height:1.8}.run-action{padding-top:0}.is-experiment .button-primary{width:100%;font-size:15px;min-height:48px;white-space:normal}.run-action p{font-size:12px}.execution-summary{padding:14px;gap:12px;align-items:flex-start;flex-wrap:wrap}.execution-label{font-size:19px}.execution-values{gap:8px}.execution-values>span{font-size:14px;gap:8px}.execution-summary>.restore-link{padding-left:0;border:0;font-size:13px;flex-basis:100%;margin:0}.verification-area h2{font-size:23px}.verification-bottom{display:block}.verification-bottom li{font-size:15px;line-height:1.9;padding:6px 0 6px 30px}.next-actions{display:flex;max-width:none;justify-content:flex-start;flex-direction:column-reverse;align-items:stretch;gap:14px;margin:18px 0 0}.next-actions>.restore-link{align-self:flex-start}.next-actions p{max-width:none;font-size:12px}.guidance-help>summary{font-size:17px}.guidance-help-row{margin-top:22px}.guidance-help-row>p{font-size:11px}.guidance-help .help-entry button{font-size:13px}.result-detail{font-size:14px}}
